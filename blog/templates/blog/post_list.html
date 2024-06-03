@@ -1,29 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Study Time Blog</title>
-    </head>
-    <body>
-        <header>
-            <h1><a href="/">Study Time Blog</a></h1>
-        </header>
-        {% for post in posts %}
-            <article>
-                <time>published: {{ post.published_date }}</time>
-                <h2><a href="">{{ post.title }}</a></h2>
-                <p>{{ post.text|linebreaksbr }}</p>
-            </article>
-        {% endfor %}
-        <article>
-            <h2><a href="">5 técnicas para aprender más efectivas</a></h2>
-            <p>Saber como aprender de manera efectiva es esencial para alcanzar tus metas académicas.</p>
-            <time>published: 1.06.2024, 12:14</time>
-        </article>
-        <article>
-            <h2><a href="">¿Por qué usar Notion?</a></h2>
-            <p>Notion es una herramienta que con tan solo saber algunos trucos puede ser de gran ayuda a la hora de organizar nuestro tiempo y proyectos para lograr todo lo que nos propongamos.</p>
-            <time>published: 19.05.2024, 12:14</time>
-        </article>
-    </body>
-</html> 
+{% extends 'blog/base.html' %}
 
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
+ 
