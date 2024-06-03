@@ -7,6 +7,13 @@
         <header>
             <h1><a href="/">Study Time Blog</a></h1>
         </header>
+        {% for post in posts %}
+            <article>
+                <time>published: {{ post.published_date }}</time>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </article>
+        {% endfor %}
         <article>
             <h2><a href="">5 técnicas para aprender más efectivas</a></h2>
             <p>Saber como aprender de manera efectiva es esencial para alcanzar tus metas académicas.</p>
